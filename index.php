@@ -52,14 +52,6 @@ try {
     foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) { 
         $count=$count+1;}
         echo "$count<br><hr>";
-}
-catch(PDOException $e) {
-    echo "Error: " . $e->getMessage();
-}
-
-try {
-    $conn = new PDO("mysql:host=sql2.njit.edu;dbname=np549", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $stmt = $conn->prepare("SELECT `id`,`email`,`fname`,`lname`,`phone`,`birthday`,`gender` FROM `accounts` WHERE `id`<=\"6\""); 
     $stmt->execute();
 
